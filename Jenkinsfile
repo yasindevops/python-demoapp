@@ -41,6 +41,7 @@ pipeline{
         stage('Deploy the App') {
             steps {
                 echo 'Deploying the App'
+                sh 'docker rm -f "$CONT_NAME" || echo "there is no existing container with this name"'
                 sh 'docker run --name "$CONT_NAME" -d -p 5000:5000 "$IMAGE_NAME"'          
           
           }
