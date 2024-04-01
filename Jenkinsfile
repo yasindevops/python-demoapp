@@ -47,8 +47,11 @@ pipeline{
           }
         }
 
-        stage ('Cleanup Artifacts') {
-            steps {
+        stage('Destroy the infrastructure'){
+            steps{
+                timeout(time:5, unit:'DAYS'){
+                    input message:'Approve terminate'
+                }   
                 script {
                    sh 'docker rm -f "$CONT_NAME"' 
                    sh 'docker rmi -f "$IMAGE_NAME"'
