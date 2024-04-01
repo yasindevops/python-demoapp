@@ -40,9 +40,8 @@ pipeline{
         stage('Deploy the App') {
             steps {
                 echo 'Deploying the App'
-                {
-                sh 'docker run --name "$IMAGE_NAME" -d -p 5000:5000 "$IMAGE_NAME"'               
-            }
+                sh 'docker run --name "$IMAGE_NAME" -d -p 5000:5000 "$IMAGE_NAME"'          
+          
           }
         }
 
