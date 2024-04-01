@@ -7,6 +7,7 @@ pipeline{
         // DOCKER_PASS = 'dockerhub'
         IMAGE_TAG="v${RELEASE}-b${BUILD_NUMBER}"
         IMAGE_NAME="${DOCKER_USER}/${APP_NAME}:${IMAGE_TAG}"
+        CONT_NAME="${APP_NAME}"
         JENKINS_API_TOKEN = credentials("JENKINS_API_TOKEN")
         
     }
@@ -40,7 +41,7 @@ pipeline{
         stage('Deploy the App') {
             steps {
                 echo 'Deploying the App'
-                sh 'docker run --name "$IMAGE_NAME" -d -p 5000:5000 "$IMAGE_NAME"'          
+                sh 'docker run --name "$CONT_NAME" -d -p 5000:5000 "$IMAGE_NAME"'          
           
           }
         }
@@ -48,7 +49,7 @@ pipeline{
         stage ('Cleanup Artifacts') {
             steps {
                 script {
-                   sh 'docker rm -f "$IMAGE_NAME"' 
+                   sh 'docker rm -f "$CONT_NAME"' 
                    sh 'docker rmi -f "$IMAGE_NAME"'
                 }
             }
