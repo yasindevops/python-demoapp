@@ -10,15 +10,6 @@ Typical uses would be deployment to Kubernetes, demos of Docker, CI/CD (build pi
 
 ![screen](https://user-images.githubusercontent.com/14982936/30533171-db17fccc-9c4f-11e7-8862-eb8c148fedea.png)
 
-# Status
-
-![](https://img.shields.io/github/last-commit/benc-uk/python-demoapp) ![](https://img.shields.io/github/release-date/benc-uk/python-demoapp) ![](https://img.shields.io/github/v/release/benc-uk/python-demoapp) ![](https://img.shields.io/github/commit-activity/y/benc-uk/python-demoapp)
-
-Live instances:
-
-[![](https://img.shields.io/website?label=Hosted%3A%20Azure%20App%20Service&up_message=online&url=https%3A%2F%2Fpython-demoapp.azurewebsites.net%2F)](https://python-demoapp.azurewebsites.net/)  
-[![](https://img.shields.io/website?label=Hosted%3A%20Kubernetes&up_message=online&url=https%3A%2F%2Fpython-demoapp.kube.benco.io%2F)](https://python-demoapp.kube.benco.io/)
-
 ## Building & Running Locally
 
 ### Pre-reqs
@@ -73,28 +64,10 @@ Public container image is [available on GitHub Container Registry](https://githu
 Run in a container with:
 
 ```bash
-docker run --rm -it -p 5000:5000 ghcr.io/benc-uk/python-demoapp:latest
+docker run --rm -it -p 5000:5000 yasindevops06/py-demoapp:latest
 ```
 
 Should you want to build your own container, use `make image` and the above variables to customise the name & tag.
-
-## Kubernetes
-
-The app can easily be deployed to Kubernetes using Helm, see [deploy/kubernetes/readme.md](deploy/kubernetes/readme.md) for details
-
-# GitHub Actions CI/CD
-
-A working set of CI and CD release GitHub Actions workflows are provided `.github/workflows/`, automated builds are run in GitHub hosted runners
-
-### [GitHub Actions](https://github.com/benc-uk/python-demoapp/actions)
-
-[![](https://img.shields.io/github/workflow/status/benc-uk/python-demoapp/CI%20Build%20App)](https://github.com/benc-uk/python-demoapp/actions?query=workflow%3A%22CI+Build+App%22)
-
-[![](https://img.shields.io/github/workflow/status/benc-uk/python-demoapp/CD%20Release%20-%20AKS?label=release-kubernetes)](https://github.com/benc-uk/python-demoapp/actions?query=workflow%3A%22CD+Release+-+AKS%22)
-
-[![](https://img.shields.io/github/workflow/status/benc-uk/python-demoapp/CD%20Release%20-%20Webapp?label=release-azure)](https://github.com/benc-uk/python-demoapp/actions?query=workflow%3A%22CD+Release+-+Webapp%22)
-
-[![](https://img.shields.io/github/last-commit/benc-uk/python-demoapp)](https://github.com/benc-uk/python-demoapp/commits/master)
 
 ## Running in Azure App Service (Linux)
 
@@ -106,6 +79,3 @@ For a super quick deployment, use `make deploy` which will deploy to a resource 
 make deploy
 ```
 
-## Running in Azure App Service (Windows)
-
-Just don't, it's awful
